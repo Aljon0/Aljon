@@ -26,6 +26,16 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const { isDark, toggleTheme } = useTheme();
   
+  // --- DEVICE DETECTION ---
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    };
+    checkMobile();
+  }, []);
+  
   // --- CAROUSEL STATE ---
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
@@ -115,7 +125,9 @@ export default function Home() {
 
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
                 <a 
-                  href="mailto:aljons702@gmail.com"
+                  href={isMobile ? "mailto:aljons702@gmail.com" : "https://mail.google.com/mail/?view=cm&fs=1&to=aljons702@gmail.com"}
+                  target={isMobile ? undefined : "_blank"}
+                  rel={isMobile ? undefined : "noopener noreferrer"}
                   className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium transition-opacity hover:opacity-90 ${isDark ? 'bg-white text-black' : 'bg-neutral-900 text-white'}`}
                 >
                   <Mail size={18} /> Email
