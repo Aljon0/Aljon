@@ -108,7 +108,7 @@ export function ChatWidget() {
                         <span className={`text-sm font-semibold block ${isDark ? 'text-white' : 'text-black'}`}>Portfolio Assistant</span>
                     </div>
                 </div>
-                <button onClick={() => setIsOpen(false)} className="opacity-60 hover:opacity-100 transition-opacity">
+                <button onClick={() => setIsOpen(false)} className="opacity-60 hover:opacity-100 transition-opacity cursor-pointer">
                     <X size={18} />
                 </button>
             </div>
@@ -152,7 +152,7 @@ export function ChatWidget() {
                     placeholder="Type a message..." 
                     className={`flex-1 bg-transparent text-sm focus:outline-none px-2 ${isDark ? 'text-white' : 'text-black'}`}
                 />
-                <button type="submit" disabled={isLoading || !input.trim()} className="p-2 opacity-80 hover:opacity-100">
+                <button type="submit" disabled={isLoading || !input.trim()} className="p-2 opacity-80 hover:opacity-100 cursor-pointer">
                     <Send size={16} className={isDark ? 'text-white' : 'text-black'} />
                 </button>
             </form>
