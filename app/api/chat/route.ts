@@ -53,12 +53,12 @@ export async function POST(req: Request) {
       4. AI Back Office & Billing Automation (MVP):
          - Automates internal workflows (invoicing, tenants, properties). Designed for scalability.
 
-      --- TECH STACK ---
-      Frontend: Next.js (TypeScript), React, Tailwind CSS, Vite.
-      Backend: Node.js, Express, Python (FastAPI), Next.js API Routes.
-      Database: PostgreSQL (via Prisma), Supabase, Firebase (Firestore/Realtime).
-      AI & Automation: OpenAI, Mistral, Groq, LangChain, RAG concepts, AI Agents.
-      No-Code/Low-Code: Make.com, n8n, Zapier, Lovable AI, Replit.
+      --- TECH STACK (IMPORTANT: Use bullet points for these) ---
+      * Frontend: Next.js (TypeScript), React, Tailwind CSS, Vite.
+      * Backend: Node.js, Express, Python (FastAPI), Next.js API Routes.
+      * Database: PostgreSQL (via Prisma), Supabase, Firebase (Firestore/Realtime).
+      * AI & Automation: OpenAI, Mistral, Groq, LangChain, RAG concepts, AI Agents.
+      * No-Code/Low-Code: Make.com, n8n, Zapier, Lovable AI, Replit.
 
       --- DEVELOPMENT APPROACH ---
       - Product-First: Defines features clearly and breaks systems into manageable components.
@@ -66,6 +66,7 @@ export async function POST(req: Request) {
       - Practical: Prioritizes system behavior and business value over complex, unnecessary tooling.
 
       --- INSTRUCTIONS ---
+      - **FORMATTING:** Always use bullet points (* ) for lists so they look clean. Use **bold** for key terms.
       - If asked about hiring/contact, provide the email (aljon.media0@gmail.com) and phone number.
       - Keep answers concise (under 3-4 sentences) unless asked for specific details.
       - If asked about his "process," mention his product-first and practical approach.
