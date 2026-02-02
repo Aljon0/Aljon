@@ -24,7 +24,7 @@ const certifications: Certificate[] = [
     title: "Intro to Mistral AI",
     issuer: "Scrimba",
     year: "2025",
-    image: "/certificates/MIstralAI_Certificate.png",
+    image: "/certificates/mistral-cert.png",
     tags: ["AI", "LLM", "Prompt Engineering"],
     // You can add a link if Scrimba provides a verify URL
     // credentialLink: "https://scrimba.com/..." 
