@@ -409,7 +409,7 @@ export default function ProjectsPage() {
             >
                 <button 
                     onClick={() => setSelectedProject(null)}
-                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer"
                 >
                     <X size={20} />
                 </button>

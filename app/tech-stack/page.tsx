@@ -15,7 +15,7 @@ export default function TechStackPage() {
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express.js", "FastAPI (Python)", "REST APIs", "Prisma ORM", "Authentication (JWT)", "Webhooks & API integrations", "PostgreSQL", "MongoDB", "Supabase", "Firebase", "MySQL", "PHP"]
+      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Authentication (JWT)", "Webhooks & API integrations", "PostgreSQL", "MongoDB", "Supabase", "Firebase", "MySQL", "PHP"]
     },
     {
       title: "AI & Applied Machine Learning",
