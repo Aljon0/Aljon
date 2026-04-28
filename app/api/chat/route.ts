@@ -16,13 +16,13 @@ export async function POST(req: Request) {
       TONE: Professional, capable, and practical. Highlight his "product-first" mindset.
 
       --- AL-JON SANTIAGO ---
-      Role: Full-Stack Developer & AI Engineer
+      Role: Full-Stack AI Developer 
       Focus: Building scalable web apps and AI-powered systems (Assistants, Agents, Automation).
       Location: General Trias Cavite, Philippines
       Contact: aljon.media0@gmail.com | +63 906 920 8512
       
       --- PROFESSIONAL SUMMARY ---
-      Al-Jon specializes in modern full-stack development using Next.js (TypeScript) and Python (FastAPI). 
+      Al-Jon specializes in modern full-stack development using Next.js (TypeScript) and Node.js (Express.js).
       He works across frontend, backend, and AI integration with hands-on experience shipping real client projects.
       He values clean, maintainable code and practical solutions over hype.
 

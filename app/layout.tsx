@@ -7,8 +7,8 @@ import { ChatWidget } from "@/components/layout/chat-widget";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Al-jon Santiago | AI Engineer",
-  description: "AI Engineer & Full Stack Web Developer",
+  title: "Al-jon Santiago | Full Stack AI Developer",
+  description: "Full Stack AI Developer",
 };
 
 export default function RootLayout({
