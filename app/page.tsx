@@ -1,6 +1,6 @@
 "use client";
 
-import { useTheme } from "@/components/theme-context";
+import { useTheme } from "@/components/theme-context"; // Note: ensure this path aligns with your setup
 import { Card } from "@/components/ui/card";
 import {
   ArrowUpRight,
@@ -272,34 +272,7 @@ export default function Home() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {/* Project 1: AI-Health Companion */}
-                <div
-                  className={`flex flex-col overflow-hidden rounded-xl border ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-50 border-neutral-100"}`}
-                >
-                  <div className="relative h-32 w-full bg-neutral-200 dark:bg-neutral-800">
-                    <Image
-                      src="/projects/AI-HealthCare.webp"
-                      alt="AI-Health Companion"
-                      fill
-                      className="object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4 flex-1 flex flex-col justify-center">
-                    <h3
-                      className={`font-medium text-sm mb-1 ${isDark ? "text-white" : "text-black"}`}
-                    >
-                      AI-Health Companion
-                    </h3>
-                    <p
-                      className={`text-xs line-clamp-2 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
-                    >
-                      A smart healthcare assistant web app that uses Mistral AI
-                      and public medical APIs to help users check symptoms.
-                    </p>
-                  </div>
-                </div>
-
-                {/* Project 2: AI-Resume Builder */}
+                {/* Project 1: AI-Resume Builder */}
                 <div
                   className={`flex flex-col overflow-hidden rounded-xl border ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-50 border-neutral-100"}`}
                 >
@@ -322,6 +295,32 @@ export default function Home() {
                     >
                       An intelligent resume builder that uses Mistral AI for
                       skill suggestions, customizable templates, and PDF export.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Project 2: E-Commerce */}
+                <div
+                  className={`flex flex-col overflow-hidden rounded-xl border ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-50 border-neutral-100"}`}
+                >
+                  <div className="relative h-32 w-full bg-neutral-200 dark:bg-neutral-800">
+                    <Image
+                      src="/projects/Shopsmart.png"
+                      alt="E-Commerce"
+                      fill
+                      className="object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4 flex-1 flex flex-col justify-center">
+                    <h3
+                      className={`font-medium text-sm mb-1 ${isDark ? "text-white" : "text-black"}`}
+                    >
+                      E-Commerce
+                    </h3>
+                    <p
+                      className={`text-xs line-clamp-2 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+                    >
+                      A modern e-commerce platform with Stripe integration, product API, and Firebase backend for authentication.
                     </p>
                   </div>
                 </div>

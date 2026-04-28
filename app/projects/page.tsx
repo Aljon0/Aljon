@@ -37,36 +37,6 @@ interface Project {
 const featuredProjects: Project[] = [
   {
     id: 1,
-    title: "AI-Health Companion",
-    description:
-      "A smart healthcare assistant web app that uses Mistral AI and public medical APIs to help users check symptoms, track mental health, and access timely health advice.",
-    image: "/projects/AI-HealthCare.webp",
-    category: "Web App",
-    technologies: ["React", "Tailwind", "Firebase", "Express", "Mistral AI"],
-    link: "https://projectbaymax.onrender.com/",
-    featured: true,
-    caseStudy: {
-      title: "BAYMAX – Your AI-Powered Health Companion",
-      overview:
-        "BAYMAX is an AI-driven health assistant web application that empowers users to monitor their well-being through symptom checks, mood tracking, journaling, and wellness tips. By integrating Mistral AI with trusted public medical data sources like the National Library of Medicine (NLM), the system provides informed and contextual health responses in real time.",
-      features: [
-        "AI-powered Symptom Checker using Mistral AI and MedlinePlus/NLM APIs",
-        "Daily emotional and health check-ins with mood sliders and logs",
-        "Private journaling feature with CBT-inspired prompts",
-        "Personalized health tips and push notification reminders",
-        "Emergency assistant with quick access to stored critical health info",
-      ],
-      technologyStack: [
-        "Frontend: React.js + Tailwind CSS",
-        "Backend: Express.js (Node.js)",
-        "AI Integration: Mistral AI + NLM / MedlinePlus APIs",
-        "Database: Firebase Firestore",
-        "Authentication: Firebase Authentication",
-      ],
-    },
-  },
-  {
-    id: 2,
     title: "AI-Resume Builder",
     description:
       "An intelligent resume builder that uses Mistral AI for skill suggestions, customizable templates, and PDF export with Firebase integration.",
@@ -96,7 +66,7 @@ const featuredProjects: Project[] = [
     },
   },
   {
-    id: 3,
+    id: 2,
     title: "ED3C: Eternal Design",
     description:
       "Interactive 3D customization web application for memorial design and gravestone creation.",
@@ -141,7 +111,7 @@ const featuredProjects: Project[] = [
     },
   },
   {
-    id: 4,
+    id: 3,
     title: "E-Commerce",
     description:
       "A e-commerce with Stripe integration, product API, and Firebase backend for authentication and order tracking.",
@@ -174,7 +144,7 @@ const featuredProjects: Project[] = [
 
 const smallProjects: Project[] = [
   {
-    id: 5,
+    id: 4,
     title: "Expense Tracker",
     description:
       "A streamlined expense tracking application built with React and Appwrite to help users manage their personal finances effectively.",
@@ -198,7 +168,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 6,
+    id: 5,
     title: "Chat Sphere",
     description:
       "ChatSphere is a sleek, responsive chat app built with React, Vite, and Tailwind CSS, showcasing real-time messaging powered by Firebase.",
@@ -221,7 +191,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 7,
+    id: 6,
     title: "Task Master",
     description:
       "A responsive and efficient task management app built with React, TailwindCSS, and Supabase. It allows users to manage tasks with features like creation, filtering, and real-time updates via a RESTful API.",
@@ -244,7 +214,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 8,
+    id: 7,
     title: "Movie Recommendation Chatbot",
     description:
       "An AI-powered movie recommendation chatbot built with React that lets users chat and receive personalized movie suggestions in real-time, no account required.",
@@ -274,7 +244,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 9,
+    id: 8,
     title: "QR Code Generator",
     description:
       "A minimalist QR code generator web app built with React and TypeScript, enabling users to create, preview, and download custom QR codes effortlessly.",
