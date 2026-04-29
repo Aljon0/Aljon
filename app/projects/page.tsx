@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
-import Image from "next/image";
-import { useState, useEffect } from "react";
-import { ArrowLeft, X, ExternalLink, Layers } from "lucide-react";
 import { useTheme } from "@/components/theme-context";
+import { ArrowLeft, ExternalLink, Layers, X } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 // --- 1. DEFINE TYPES (Fixes "Unexpected any") ---
 interface ProblemSolution {
@@ -67,6 +67,49 @@ const featuredProjects: Project[] = [
   },
   {
     id: 2,
+    title: "Private Knowledge Base AI (Advanced RAG)",
+    description:
+      "A full-stack AI-powered knowledge base system that allows users to upload PDFs, ask questions, and receive accurate answers with citations using a Retrieval-Augmented Generation (RAG) pipeline.",
+    image: "/projects/Advanced-Rag.png", // change if needed
+    category: "AI Web App",
+    technologies: [
+      "Next.js",
+      "Tailwind",
+      "Express",
+      "Supabase",
+      "Mistral AI",
+      "pgvector",
+    ],
+    link: "https://advanced-rag.vercel.app/dashboard",
+    featured: true,
+    caseStudy: {
+      title: "Private Knowledge Base AI with Advanced RAG",
+      overview:
+        "This project is a full-stack AI system that enables users to upload PDF documents and interact with them through a chat interface. It uses a Retrieval-Augmented Generation (RAG) pipeline to provide accurate, context-aware answers with citations. By combining vector embeddings, hybrid search, and LLM generation, the system minimizes hallucinations and improves answer reliability.",
+
+      features: [
+        "PDF Upload System: Upload and process documents into a searchable knowledge base",
+        "AI Chat Interface: Ask questions and receive contextual answers in real-time",
+        "RAG Pipeline: Combines retrieval and generation for accurate responses",
+        "Hybrid Search: Uses both vector similarity and keyword search for better results",
+        "Citations & Source Highlighting: Displays document sources for each answer",
+        "Confidence Score: Indicates reliability of generated responses",
+        "Modular Full-Stack Architecture: Clean separation of frontend and backend",
+        "Scalable Vector Storage: Uses pgvector with Supabase for efficient similarity search",
+      ],
+
+      technologyStack: [
+        "Frontend: Next.js with Tailwind CSS",
+        "Backend: Express.js (Node.js)",
+        "Database: Supabase (PostgreSQL + pgvector)",
+        "AI Embeddings: Mistral AI",
+        "LLM Generation: Mistral AI",
+        "Architecture: Retrieval-Augmented Generation (RAG)",
+      ],
+    },
+  },
+  {
+    id: 3,
     title: "ED3C: Eternal Design",
     description:
       "Interactive 3D customization web application for memorial design and gravestone creation.",
@@ -110,8 +153,11 @@ const featuredProjects: Project[] = [
       ],
     },
   },
+];
+
+const smallProjects: Project[] = [
   {
-    id: 3,
+    id: 4,
     title: "E-Commerce",
     description:
       "A e-commerce with Stripe integration, product API, and Firebase backend for authentication and order tracking.",
@@ -140,11 +186,8 @@ const featuredProjects: Project[] = [
       ],
     },
   },
-];
-
-const smallProjects: Project[] = [
   {
-    id: 4,
+    id: 5,
     title: "Expense Tracker",
     description:
       "A streamlined expense tracking application built with React and Appwrite to help users manage their personal finances effectively.",
@@ -168,7 +211,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 5,
+    id: 6,
     title: "Chat Sphere",
     description:
       "ChatSphere is a sleek, responsive chat app built with React, Vite, and Tailwind CSS, showcasing real-time messaging powered by Firebase.",
@@ -191,7 +234,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     title: "Task Master",
     description:
       "A responsive and efficient task management app built with React, TailwindCSS, and Supabase. It allows users to manage tasks with features like creation, filtering, and real-time updates via a RESTful API.",
@@ -210,36 +253,9 @@ const smallProjects: Project[] = [
         "Task Filtering: Easily filter tasks by category to stay focused.",
         "Responsive Design: Fully optimized for both desktop and mobile screens.",
       ],
-      technologyStack: ["Frontend: React + Vite, TailwindCSS", "Backend: Supabase"],
-    },
-  },
-  {
-    id: 7,
-    title: "Movie Recommendation Chatbot",
-    description:
-      "An AI-powered movie recommendation chatbot built with React that lets users chat and receive personalized movie suggestions in real-time, no account required.",
-    image: "/projects/ai-mr.webp",
-    category: "Web App",
-    technologies: ["React", "Tailwind", "Express"],
-    link: "https://ai-movie.onrender.com",
-    featured: false,
-    caseStudy: {
-      title: "AI-Powered Movie Recommendation Chatbot",
-      overview:
-        "This chatbot web app provides users with personalized movie recommendations through an AI-driven conversational interface. By leveraging Hugging Face's natural language processing capabilities and real-time movie data from TMDB, the chatbot delivers intelligent and engaging suggestions. Users can interact freely without needing an account, and favorites are saved locally for convenience.",
-      features: [
-        "Conversational UI: Chat-based interface for a natural and engaging user experience",
-        "AI-Driven Suggestions: Uses Hugging Face API to understand context and deliver tailored movie recommendations",
-        "Rich Movie Data: Pulls movie details including titles, posters, and summaries from TMDB",
-        "Local Favorites: Users can save favorite movies to local storage with no login required",
-        "Responsive Design: Fully responsive layout optimized for both desktop and mobile users",
-      ],
       technologyStack: [
-        "Frontend: React.js with Tailwind CSS",
-        "AI Integration: Hugging Face Inference API",
-        "Movie Data: TMDB (The Movie Database) API",
-        "Storage: Browser Local Storage",
-        "Backend: Express.js (Node.js)",
+        "Frontend: React + Vite, TailwindCSS",
+        "Backend: Supabase",
       ],
     },
   },
@@ -294,202 +310,243 @@ export default function ProjectsPage() {
   return (
     <div className="min-h-screen p-8 md:p-12 relative">
       <div className="max-w-6xl mx-auto">
-        <Link href="/" className="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 mb-8 transition-colors">
-            <ArrowLeft size={16} /> Back to Home
+        <Link
+          href="/"
+          className="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 mb-8 transition-colors"
+        >
+          <ArrowLeft size={16} /> Back to Home
         </Link>
-        
+
         <h1 className="text-4xl font-bold mb-4">All Projects</h1>
         <p className="opacity-60 mb-10 text-lg max-w-2xl">
-            A showcase of my applications, experiments, and full-stack solutions.
+          A showcase of my applications, experiments, and full-stack solutions.
         </p>
-        
+
         {/* PROJECTS GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {allProjects.map((project) => (
-                <div 
-                    key={project.id}
-                    onClick={() => setSelectedProject(project)}
-                    className={`
+          {allProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => setSelectedProject(project)}
+              className={`
                         group relative rounded-xl overflow-hidden cursor-pointer border transition-all duration-300 hover:scale-[1.02]
-                        ${isDark 
-                            ? 'bg-neutral-900 border-neutral-800 hover:border-neutral-700' 
-                            : 'bg-white border-neutral-200 hover:border-neutral-300 shadow-sm hover:shadow-md'
+                        ${
+                          isDark
+                            ? "bg-neutral-900 border-neutral-800 hover:border-neutral-700"
+                            : "bg-white border-neutral-200 hover:border-neutral-300 shadow-sm hover:shadow-md"
                         }
                     `}
-                >
-                    <div className="relative aspect-video w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
-                        <Image 
-                            src={project.image} 
-                            alt={project.title}
-                            fill
-                            className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                    </div>
+            >
+              <div className="relative aspect-video w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
 
-                    <div className="p-5">
-                        <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-bold text-lg">{project.title}</h3>
-                        </div>
-                        <p className={`text-sm mb-4 line-clamp-3 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>
-                            {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-auto">
-                            {project.technologies.slice(0, 3).map(tech => (
-                                <span 
-                                    key={tech} 
-                                    className={`
+              <div className="p-5">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="font-bold text-lg">{project.title}</h3>
+                </div>
+                <p
+                  className={`text-sm mb-4 line-clamp-3 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+                >
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {project.technologies.slice(0, 3).map((tech) => (
+                    <span
+                      key={tech}
+                      className={`
                                         text-[10px] px-2 py-1 rounded font-medium border
-                                        ${isDark 
-                                            ? 'bg-neutral-800 border-neutral-700 text-neutral-300' 
-                                            : 'bg-neutral-100 border-neutral-200 text-neutral-600'
+                                        ${
+                                          isDark
+                                            ? "bg-neutral-800 border-neutral-700 text-neutral-300"
+                                            : "bg-neutral-100 border-neutral-200 text-neutral-600"
                                         }
                                     `}
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                            {project.technologies.length > 3 && (
-                                <span className="text-[10px] px-2 py-1 opacity-50">+{project.technologies.length - 3} more</span>
-                            )}
-                        </div>
-                    </div>
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 3 && (
+                    <span className="text-[10px] px-2 py-1 opacity-50">
+                      +{project.technologies.length - 3} more
+                    </span>
+                  )}
                 </div>
-            ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
       {/* --- PROJECT DETAIL MODAL OVERLAY --- */}
       {selectedProject && (
         <div className="fixed inset-0 z-100 flex justify-center items-center p-4 sm:p-6">
-            <div 
-                className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" 
-                onClick={() => setSelectedProject(null)}
-            />
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setSelectedProject(null)}
+          />
 
-            <div 
-                className={`
+          <div
+            className={`
                     relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl border flex flex-col
-                    ${isDark ? 'bg-neutral-900 border-neutral-800' : 'bg-white border-neutral-200'}
+                    ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200"}
                     /* CUSTOM SCROLLBAR STYLING */
                     [&::-webkit-scrollbar]:w-2
                     [&::-webkit-scrollbar-track]:bg-transparent
-                    ${isDark ? '[&::-webkit-scrollbar-thumb]:bg-neutral-800' : '[&::-webkit-scrollbar-thumb]:bg-neutral-200'}
+                    ${isDark ? "[&::-webkit-scrollbar-thumb]:bg-neutral-800" : "[&::-webkit-scrollbar-thumb]:bg-neutral-200"}
                     [&::-webkit-scrollbar-thumb]:rounded-full
                 `}
+          >
+            <button
+              onClick={() => setSelectedProject(null)}
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer"
             >
-                <button 
-                    onClick={() => setSelectedProject(null)}
-                    className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors cursor-pointer"
-                >
-                    <X size={20} />
-                </button>
+              <X size={20} />
+            </button>
 
-                {/* Banner */}
-                <div className="relative w-full h-48 sm:h-64 shrink-0 bg-neutral-200 dark:bg-neutral-800">
-                    <Image 
-                        src={selectedProject.image} 
-                        alt={selectedProject.title}
-                        fill
-                        className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent" />
-                    <div className="absolute bottom-6 left-6 text-white">
-                        <h2 className="text-3xl font-bold mb-2">{selectedProject.title}</h2>
-                        <div className="flex gap-2">
-                            {selectedProject.technologies.map(tech => (
-                                <span key={tech} className="px-2 py-1 bg-white/20 backdrop-blur-md rounded text-xs font-medium">
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
+            {/* Banner */}
+            <div className="relative w-full h-48 sm:h-64 shrink-0 bg-neutral-200 dark:bg-neutral-800">
+              <Image
+                src={selectedProject.image}
+                alt={selectedProject.title}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-6 left-6 text-white">
+                <h2 className="text-3xl font-bold mb-2">
+                  {selectedProject.title}
+                </h2>
+                <div className="flex gap-2">
+                  {selectedProject.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-1 bg-white/20 backdrop-blur-md rounded text-xs font-medium"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
+              </div>
+            </div>
 
-                <div className="p-6 md:p-8 space-y-8">
-                    
-                    {/* Live Link Button */}
-                    <div className="flex gap-4">
-                        <a 
-                            href={selectedProject.link} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors ${isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'}`}
-                        >
-                            <ExternalLink size={16} /> View Live Project
-                        </a>
-                    </div>
+            <div className="p-6 md:p-8 space-y-8">
+              {/* Live Link Button */}
+              <div className="flex gap-4">
+                <a
+                  href={selectedProject.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors ${isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"}`}
+                >
+                  <ExternalLink size={16} /> View Live Project
+                </a>
+              </div>
 
-                    {/* Overview */}
-                    <section>
-                        <h3 className={`text-xl font-bold mb-3 flex items-center gap-2 ${isDark ? "text-white" : "text-black"}`}>
-                            <Layers size={20} className={isDark ? "text-neutral-400" : "text-neutral-600"} /> 
-                            Overview
-                        </h3>
-                        <p className={`leading-relaxed ${isDark ? 'text-neutral-300' : 'text-neutral-600'}`}>
-                            {selectedProject.caseStudy?.overview || selectedProject.description}
-                        </p>
-                    </section>
+              {/* Overview */}
+              <section>
+                <h3
+                  className={`text-xl font-bold mb-3 flex items-center gap-2 ${isDark ? "text-white" : "text-black"}`}
+                >
+                  <Layers
+                    size={20}
+                    className={isDark ? "text-neutral-400" : "text-neutral-600"}
+                  />
+                  Overview
+                </h3>
+                <p
+                  className={`leading-relaxed ${isDark ? "text-neutral-300" : "text-neutral-600"}`}
+                >
+                  {selectedProject.caseStudy?.overview ||
+                    selectedProject.description}
+                </p>
+              </section>
 
-                    {/* Problem & Solution (Typed Check) */}
-                    {selectedProject.caseStudy?.problemAndSolution && (
-                        <div className="grid md:grid-cols-2 gap-6">
-                            <div className={`p-5 rounded-xl border ${isDark ? 'bg-neutral-900/50 border-neutral-800' : 'bg-neutral-50 border-neutral-100'}`}>
-                                <h4 className="font-semibold mb-3">The Problem</h4>
-                                <ul className="space-y-2">
-                                    {selectedProject.caseStudy.problemAndSolution.problem.map((item, i) => (
-                                        <li key={i} className={`text-sm list-disc ml-4 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                            <div className={`p-5 rounded-xl border ${isDark ? 'bg-neutral-900/50 border-neutral-800' : 'bg-neutral-50 border-neutral-100'}`}>
-                                <h4 className="font-semibold mb-3">The Solution</h4>
-                                <ul className="space-y-2">
-                                    {selectedProject.caseStudy.problemAndSolution.solution.map((item, i) => (
-                                        <li key={i} className={`text-sm list-disc ml-4 ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>{item}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    )}
+              {/* Problem & Solution (Typed Check) */}
+              {selectedProject.caseStudy?.problemAndSolution && (
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div
+                    className={`p-5 rounded-xl border ${isDark ? "bg-neutral-900/50 border-neutral-800" : "bg-neutral-50 border-neutral-100"}`}
+                  >
+                    <h4 className="font-semibold mb-3">The Problem</h4>
+                    <ul className="space-y-2">
+                      {selectedProject.caseStudy.problemAndSolution.problem.map(
+                        (item, i) => (
+                          <li
+                            key={i}
+                            className={`text-sm list-disc ml-4 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+                          >
+                            {item}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                  <div
+                    className={`p-5 rounded-xl border ${isDark ? "bg-neutral-900/50 border-neutral-800" : "bg-neutral-50 border-neutral-100"}`}
+                  >
+                    <h4 className="font-semibold mb-3">The Solution</h4>
+                    <ul className="space-y-2">
+                      {selectedProject.caseStudy.problemAndSolution.solution.map(
+                        (item, i) => (
+                          <li
+                            key={i}
+                            className={`text-sm list-disc ml-4 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+                          >
+                            {item}
+                          </li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                </div>
+              )}
 
-                    {/* Key Features */}
-                    <section>
-                        <h3 className="text-xl font-bold mb-4">Key Features</h3>
-                        <div className="grid sm:grid-cols-2 gap-3">
-                            {selectedProject.caseStudy?.features.map((feature, idx) => (
-                                <div 
-                                    key={idx} 
-                                    className={`
+              {/* Key Features */}
+              <section>
+                <h3 className="text-xl font-bold mb-4">Key Features</h3>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {selectedProject.caseStudy?.features.map((feature, idx) => (
+                    <div
+                      key={idx}
+                      className={`
                                         p-3 rounded-lg border transition-colors
-                                        ${isDark 
-                                            ? 'bg-neutral-800/50 border-neutral-800 text-neutral-300' 
-                                            : 'bg-neutral-50 border-neutral-100 text-neutral-600'
+                                        ${
+                                          isDark
+                                            ? "bg-neutral-800/50 border-neutral-800 text-neutral-300"
+                                            : "bg-neutral-50 border-neutral-100 text-neutral-600"
                                         }
                                     `}
-                                >
-                                    <span className="text-sm">{feature}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
-
-                    {/* Tech Stack */}
-                    <section>
-                        <h3 className="text-xl font-bold mb-4">Technology Stack</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {selectedProject.caseStudy?.technologyStack?.map((tech, idx) => (
-                                <span 
-                                    key={idx} 
-                                    className={`px-3 py-1.5 rounded text-sm font-mono border ${isDark ? 'border-neutral-700 bg-neutral-800 text-neutral-300' : 'border-neutral-200 bg-neutral-100 text-neutral-700'}`}
-                                >
-                                    {tech}
-                                </span>
-                            ))}
-                        </div>
-                    </section>
-
+                    >
+                      <span className="text-sm">{feature}</span>
+                    </div>
+                  ))}
                 </div>
+              </section>
+
+              {/* Tech Stack */}
+              <section>
+                <h3 className="text-xl font-bold mb-4">Technology Stack</h3>
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.caseStudy?.technologyStack?.map(
+                    (tech, idx) => (
+                      <span
+                        key={idx}
+                        className={`px-3 py-1.5 rounded text-sm font-mono border ${isDark ? "border-neutral-700 bg-neutral-800 text-neutral-300" : "border-neutral-200 bg-neutral-100 text-neutral-700"}`}
+                      >
+                        {tech}
+                      </span>
+                    ),
+                  )}
+                </div>
+              </section>
             </div>
+          </div>
         </div>
       )}
     </div>

@@ -299,14 +299,14 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Project 2: E-Commerce */}
+                {/* Project 2: Private Knowledge Base AI (Advanced RAG) */}
                 <div
                   className={`flex flex-col overflow-hidden rounded-xl border ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-neutral-50 border-neutral-100"}`}
                 >
                   <div className="relative h-32 w-full bg-neutral-200 dark:bg-neutral-800">
                     <Image
-                      src="/projects/Shopsmart.png"
-                      alt="E-Commerce"
+                      src="/projects/Advanced-Rag.png"
+                      alt="Private Knowledge Base AI"
                       fill
                       className="object-cover opacity-90 transition-transform duration-500 group-hover:scale-105"
                     />
@@ -315,12 +315,12 @@ export default function Home() {
                     <h3
                       className={`font-medium text-sm mb-1 ${isDark ? "text-white" : "text-black"}`}
                     >
-                      E-Commerce
+                      Private Knowledge Base AI
                     </h3>
                     <p
                       className={`text-xs line-clamp-2 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
                     >
-                      A modern e-commerce platform with Stripe integration, product API, and Firebase backend for authentication.
+                      A full-stack AI-powered knowledge base system that allows users to upload PDFs, ask questions, and receive accurate answers with citations.
                     </p>
                   </div>
                 </div>
