@@ -70,7 +70,7 @@ const featuredProjects: Project[] = [
     title: "Private Knowledge Base AI (Advanced RAG)",
     description:
       "A full-stack AI-powered knowledge base system that allows users to upload PDFs, ask questions, and receive accurate answers with citations using a Retrieval-Augmented Generation (RAG) pipeline.",
-    image: "/projects/Advanced-Rag.png", // change if needed
+    image: "/projects/Advanced-Rag.png",
     category: "AI Web App",
     technologies: [
       "Next.js",
@@ -153,11 +153,53 @@ const featuredProjects: Project[] = [
       ],
     },
   },
+  {
+    id: 4,
+    title: "AI Systems Evaluation Playground",
+    description:
+      "A full-stack AI evaluation platform that compares multiple LLM responses in real-time, allowing users to analyze latency, response quality, token usage, and overall model performance through an interactive dashboard.",
+    image: "/projects/EvalPlayground.png",
+    category: "AI Web App",
+    technologies: [
+      "Next.js",
+      "Tailwind",
+      "Express",
+      "Supabase",
+      "Mistral AI",
+      "Groq"
+    ],
+    link: "https://ai-eval-playground.vercel.app/",
+    featured: true,
+    caseStudy: {
+      title: "AI Systems Evaluation Playground",
+      overview:
+        "This project is a full-stack AI evaluation platform designed to compare and analyze responses from multiple large language models in real-time. Users can input prompts, run them across different AI providers, and evaluate outputs based on latency, response quality, token usage, and scoring metrics. The platform was built to explore AI system behavior, prompt effectiveness, and model performance in a structured and interactive way.",
+  
+      features: [
+        "Multi-Model Evaluation: Run prompts across multiple AI models simultaneously",
+        "Response Comparison Dashboard: Compare outputs side-by-side in real-time",
+        "Latency Tracking: Measure and display response speed per model",
+        "Usage Estimation: Display token or usage estimates for each request",
+        "Experiment Saving: Store prompt experiments and previous evaluations",
+        "Ranking System: Score and rank model responses based on quality",
+        "Responsive SaaS UI: Elegant and fully responsive interface across devices",
+        "Modular Full-Stack Architecture: Clean separation between frontend and backend systems"
+      ],
+  
+      technologyStack: [
+        "Frontend: Next.js with Tailwind CSS",
+        "Backend: Express.js (Node.js)",
+        "Database: Supabase (PostgreSQL)",
+        "AI Models: Mistral AI and Groq",
+        "Architecture: Multi-Model AI Evaluation System"
+      ]
+    }
+  }
 ];
 
 const smallProjects: Project[] = [
   {
-    id: 4,
+    id: 5,
     title: "E-Commerce",
     description:
       "A e-commerce with Stripe integration, product API, and Firebase backend for authentication and order tracking.",
@@ -187,7 +229,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 5,
+    id: 6,
     title: "Expense Tracker",
     description:
       "A streamlined expense tracking application built with React and Appwrite to help users manage their personal finances effectively.",
@@ -211,7 +253,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     title: "Chat Sphere",
     description:
       "ChatSphere is a sleek, responsive chat app built with React, Vite, and Tailwind CSS, showcasing real-time messaging powered by Firebase.",
@@ -234,7 +276,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     title: "Task Master",
     description:
       "A responsive and efficient task management app built with React, TailwindCSS, and Supabase. It allows users to manage tasks with features like creation, filtering, and real-time updates via a RESTful API.",
@@ -260,7 +302,7 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     title: "QR Code Generator",
     description:
       "A minimalist QR code generator web app built with React and TypeScript, enabling users to create, preview, and download custom QR codes effortlessly.",
