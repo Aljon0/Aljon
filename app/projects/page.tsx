@@ -113,7 +113,7 @@ const featuredProjects: Project[] = [
     title: "ED3C: Eternal Design (Double Seven)",
     description:
       "A full-stack SaaS and interactive 3D customization platform for memorial design, featuring e-commerce and order management.",
-    image: "/projects/3DGC.PNG",
+    image: "/projects/3DGC.png",
     category: "Full-Stack Web App",
     technologies: ["React", "React Three Fiber", "Express.js", "Supabase", "PostgreSQL"],
     link: "https://threedgc.onrender.com",
