@@ -1,12 +1,21 @@
 "use client";
 
 import { useTheme } from "@/components/theme-context";
-import { ArrowLeft, ExternalLink, Layers, X } from "lucide-react";
+import {
+  ArrowLeft,
+  ChevronLeft,
+  ChevronRight,
+  ExternalLink,
+  Layers,
+  Play,
+  Workflow,
+  X,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-// --- 1. DEFINE TYPES (Fixes "Unexpected any") ---
+// --- 1. DEFINE TYPES ---
 interface ProblemSolution {
   problem: string[];
   solution: string[];
@@ -17,7 +26,13 @@ interface CaseStudy {
   overview: string;
   features: string[];
   technologyStack: string[];
-  problemAndSolution?: ProblemSolution; // Optional, as not all projects have this
+  problemAndSolution?: ProblemSolution;
+}
+
+interface AutomationWorkflow {
+  title: string;
+  description: string;
+  image: string;
 }
 
 interface Project {
@@ -30,38 +45,63 @@ interface Project {
   link: string;
   featured: boolean;
   year?: string;
-  caseStudy?: CaseStudy; // Optional
+  videoDemo?: string; // NEW: For Loom/Video links
+  workflows?: AutomationWorkflow[]; // NEW: For the Automation Gallery
+  caseStudy?: CaseStudy;
 }
 
-// --- DATA: Typed correctly now ---
-const featuredProjects: Project[] = [
+// --- 2. DATA (Reordered & Combined) ---
+const allProjects: Project[] = [
   {
-    id: 1,
-    title: "AI-Resume Builder",
+    id: 3,
+    title: "ED3C: Eternal Design (Double Seven)",
     description:
-      "An intelligent resume builder that uses Mistral AI for skill suggestions, customizable templates, and PDF export with Firebase integration.",
-    image: "/projects/AI-Resume Builder.webp",
-    category: "Web App",
-    technologies: ["React", "Tailwind", "Firebase", "Express", "Mistral AI"],
-    link: "https://ai-rb-haee.onrender.com",
+      "A full-stack SaaS and interactive 3D customization platform for memorial design, featuring e-commerce and order management.",
+    image: "/projects/3DGC.png",
+    category: "Full-Stack Web App",
+    technologies: [
+      "React",
+      "React Three Fiber",
+      "Express.js",
+      "Supabase",
+      "PostgreSQL",
+    ],
+    link: "https://threedgc.onrender.com",
     featured: true,
+    year: "2026",
     caseStudy: {
-      title: "AI-Powered Resume Builder: Smarter Resume Creation",
+      title: "ED3C: Eternal Design 3D Customization & SaaS Platform",
       overview:
-        "This web application streamlines the resume creation process by integrating Mistral AI to suggest relevant skills based on job titles. It allows users to generate, customize, save, and download resumes using a clean, intuitive interface and PDF-ready templates.",
+        "ED3C is a flagship web application designed to transform the memorial design process for Double Seven Lapida Maker Incorporation. By combining an intuitive, real-time WebGL 3D customization platform with a robust e-commerce and SaaS-style admin dashboard, it modernizes traditional memorial design.",
+      problemAndSolution: {
+        problem: [
+          "Customers demand immediate design previews, leading to time-consuming manual revisions and bottlenecks.",
+          "The business struggled to manage order states, resulting in confusion over customer requests and specifications.",
+          "Revenue was lost due to uncompleted partial payments and abandoned orders lacking a strict enforcement system.",
+          "The previous NoSQL database structure made it difficult to track relational data like inventory, complex orders, and users effectively.",
+        ],
+        solution: [
+          "Implemented React Three Fiber for a real-time 3D visualization workspace, allowing customers to self-serve gravestone, urn, and table sign designs.",
+          "Built a secure Express.js REST API with Role-Based Access Control (RBAC) and a Kanban-style admin dashboard to track order lifecycles (Pending to Finished).",
+          "Enforced strict payment gateways using Supabase Storage for receipt validation, preventing order processing until payments are verified.",
+          "Migrated to a PostgreSQL relational database (Supabase) to seamlessly link users, intricate order details, and real-time inventory tracking.",
+        ],
+      },
       features: [
-        "AI-generated skill suggestions via Mistral AI",
-        "Customizable resume templates styled with Tailwind CSS",
-        "Export resumes as PDF files",
-        "Save and load resumes using Firebase Firestore",
-        "Secure user authentication via Firebase Auth",
+        "Interactive 3D WebGL design tool with custom textures and elements",
+        "Kanban-style Order Management System for admins",
+        "Real-time messaging hub between customers and the business",
+        "Secure Auth & Role-Based Access Control (RBAC)",
+        "Partial and full payment tracking with digital receipt validation",
+        "Admin Dashboard with Recharts for monthly sales and inventory analytics",
+        "PostgreSQL-powered inventory tracking with low-stock alerts",
+        "Global template design manager for pre-built 3D stones",
       ],
       technologyStack: [
-        "Frontend: React.js + Tailwind CSS",
-        "Backend: Express.js (Node.js)",
-        "AI Integration: Mistral AI",
-        "Database: Firebase Firestore",
-        "Authentication: Firebase Authentication",
+        "Frontend: React.js, Zustand, Tailwind CSS",
+        "3D Rendering: React Three Fiber (@react-three/drei)",
+        "Backend API: Node.js, Express.js",
+        "Database & Auth: Supabase (PostgreSQL), Supabase Auth, Supabase Storage",
       ],
     },
   },
@@ -86,7 +126,6 @@ const featuredProjects: Project[] = [
       title: "Private Knowledge Base AI with Advanced RAG",
       overview:
         "This project is a full-stack AI system that enables users to upload PDF documents and interact with them through a chat interface. It uses a Retrieval-Augmented Generation (RAG) pipeline to provide accurate, context-aware answers with citations. By combining vector embeddings, hybrid search, and LLM generation, the system minimizes hallucinations and improves answer reliability.",
-
       features: [
         "PDF Upload System: Upload and process documents into a searchable knowledge base",
         "AI Chat Interface: Ask questions and receive contextual answers in real-time",
@@ -97,7 +136,6 @@ const featuredProjects: Project[] = [
         "Modular Full-Stack Architecture: Clean separation of frontend and backend",
         "Scalable Vector Storage: Uses pgvector with Supabase for efficient similarity search",
       ],
-
       technologyStack: [
         "Frontend: Next.js with Tailwind CSS",
         "Backend: Express.js (Node.js)",
@@ -108,98 +146,6 @@ const featuredProjects: Project[] = [
       ],
     },
   },
-  {
-    id: 3,
-    title: "ED3C: Eternal Design (Double Seven)",
-    description:
-      "A full-stack SaaS and interactive 3D customization platform for memorial design, featuring e-commerce and order management.",
-    image: "/projects/3DGC.png",
-    category: "Full-Stack Web App",
-    technologies: ["React", "React Three Fiber", "Express.js", "Supabase", "PostgreSQL"],
-    link: "https://threedgc.onrender.com",
-    featured: true,
-    year: "2026",
-    caseStudy: {
-      title: "ED3C: Eternal Design 3D Customization & SaaS Platform",
-      overview:
-        "ED3C is a flagship web application designed to transform the memorial design process for Double Seven Lapida Maker Incorporation. By combining an intuitive, real-time WebGL 3D customization platform with a robust e-commerce and SaaS-style admin dashboard, it modernizes traditional memorial design.",
-      problemAndSolution: {
-        problem: [
-          "Customers demand immediate design previews, leading to time-consuming manual revisions and bottlenecks.",
-          "The business struggled to manage order states, resulting in confusion over customer requests and specifications.",
-          "Revenue was lost due to uncompleted partial payments and abandoned orders lacking a strict enforcement system.",
-          "The previous NoSQL database structure made it difficult to track relational data like inventory, complex orders, and users effectively."
-        ],
-        solution: [
-          "Implemented React Three Fiber for a real-time 3D visualization workspace, allowing customers to self-serve gravestone, urn, and table sign designs.",
-          "Built a secure Express.js REST API with Role-Based Access Control (RBAC) and a Kanban-style admin dashboard to track order lifecycles (Pending to Finished).",
-          "Enforced strict payment gateways using Supabase Storage for receipt validation, preventing order processing until payments are verified.",
-          "Migrated to a PostgreSQL relational database (Supabase) to seamlessly link users, intricate order details, and real-time inventory tracking."
-        ],
-      },
-      features: [
-        "Interactive 3D WebGL design tool with custom textures and elements",
-        "Kanban-style Order Management System for admins",
-        "Real-time messaging hub between customers and the business",
-        "Secure Auth & Role-Based Access Control (RBAC)",
-        "Partial and full payment tracking with digital receipt validation",
-        "Admin Dashboard with Recharts for monthly sales and inventory analytics",
-        "PostgreSQL-powered inventory tracking with low-stock alerts",
-        "Global template design manager for pre-built 3D stones",
-      ],
-      technologyStack: [
-        "Frontend: React.js, Zustand, Tailwind CSS",
-        "3D Rendering: React Three Fiber (@react-three/drei)",
-        "Backend API: Node.js, Express.js",
-        "Database & Auth: Supabase (PostgreSQL), Supabase Auth, Supabase Storage",
-      ],
-    },
-  },
-  {
-    id: 4,
-    title: "AI Systems Evaluation Playground",
-    description:
-      "A full-stack AI evaluation platform that compares multiple LLM responses in real-time, allowing users to analyze latency, response quality, token usage, and overall model performance through an interactive dashboard.",
-    image: "/projects/EvalPlayground.png",
-    category: "AI Web App",
-    technologies: [
-      "Next.js",
-      "Tailwind",
-      "Express",
-      "Supabase",
-      "Mistral AI",
-      "Groq"
-    ],
-    link: "https://ai-eval-playground.vercel.app/",
-    featured: true,
-    caseStudy: {
-      title: "AI Systems Evaluation Playground",
-      overview:
-        "This project is a full-stack AI evaluation platform designed to compare and analyze responses from multiple large language models in real-time. Users can input prompts, run them across different AI providers, and evaluate outputs based on latency, response quality, token usage, and scoring metrics. The platform was built to explore AI system behavior, prompt effectiveness, and model performance in a structured and interactive way.",
-  
-      features: [
-        "Multi-Model Evaluation: Run prompts across multiple AI models simultaneously",
-        "Response Comparison Dashboard: Compare outputs side-by-side in real-time",
-        "Latency Tracking: Measure and display response speed per model",
-        "Usage Estimation: Display token or usage estimates for each request",
-        "Experiment Saving: Store prompt experiments and previous evaluations",
-        "Ranking System: Score and rank model responses based on quality",
-        "Responsive SaaS UI: Elegant and fully responsive interface across devices",
-        "Modular Full-Stack Architecture: Clean separation between frontend and backend systems"
-      ],
-  
-      technologyStack: [
-        "Frontend: Next.js with Tailwind CSS",
-        "Backend: Express.js (Node.js)",
-        "Database: Supabase (PostgreSQL)",
-        "AI Models: Mistral AI and Groq",
-        "Architecture: Multi-Model AI Evaluation System"
-      ]
-    }
-  }
-];
-
-const smallProjects: Project[] = [
   {
     id: 5,
     title: "E-Commerce",
@@ -231,115 +177,160 @@ const smallProjects: Project[] = [
     },
   },
   {
-    id: 6,
-    title: "Expense Tracker",
+    id: 4,
+    title: "AI Systems Evaluation Playground",
     description:
-      "A streamlined expense tracking application built with React and Appwrite to help users manage their personal finances effectively.",
-    image: "/projects/expensetracker.webp",
-    category: "Web App",
-    technologies: ["React", "Tailwind", "Appwrite"],
-    link: "https://expensetracker-hrws.onrender.com",
-    featured: false,
+      "A full-stack AI evaluation platform that compares multiple LLM responses in real-time, allowing users to analyze latency, response quality, token usage, and overall model performance through an interactive dashboard.",
+    image: "/projects/EvalPlayground.png",
+    category: "AI Web App",
+    technologies: [
+      "Next.js",
+      "Tailwind",
+      "Express",
+      "Supabase",
+      "Mistral AI",
+      "Groq",
+    ],
+    link: "https://ai-eval-playground.vercel.app/",
+    featured: true,
     caseStudy: {
-      title: "Expense Tracker",
+      title: "AI Systems Evaluation Playground",
       overview:
-        "ExpenseTracker is a simple yet powerful web application that allows users to track and manage their expenses. With intuitive user interface and seamless integration with Appwrite backend services, users can easily categorize expenses, perform CRUD operations, and gain insights into their spending habits.",
+        "This project is a full-stack AI evaluation platform designed to compare and analyze responses from multiple large language models in real-time. Users can input prompts, run them across different AI providers, and evaluate outputs based on latency, response quality, token usage, and scoring metrics. The platform was built to explore AI system behavior, prompt effectiveness, and model performance in a structured and interactive way.",
       features: [
-        "User Authentication: Secure login and registration system powered by Appwrite Auth",
-        "Expense Management: Create, read, update, and delete expense records",
-        "Categorization: Organize expenses into categories (food, travel, bills, etc.)",
-        "Responsive Design: Works seamlessly across desktop and mobile devices",
-        "Real-time Updates: Changes reflect immediately with Appwrite's real-time capabilities",
-      ],
-      technologyStack: ["Frontend: React.js", "Backend/Database: Appwrite"],
-    },
-  },
-  {
-    id: 7,
-    title: "Chat Sphere",
-    description:
-      "ChatSphere is a sleek, responsive chat app built with React, Vite, and Tailwind CSS, showcasing real-time messaging powered by Firebase.",
-    image: "/projects/chatsphere.webp",
-    category: "Web App",
-    technologies: ["React", "Tailwind", "Firebase"],
-    link: "https://chat-web-app-1c91d.web.app/",
-    featured: false,
-    caseStudy: {
-      title: "Chat Sphere",
-      overview:
-        "ChatSphere is a modern, responsive real-time chat application built with React, Vite, and Tailwind CSS. This project demonstrates how to create an elegant messaging interface with a focus on user experience and design.",
-      features: [
-        "User Authentication: Email/Password login and registration, google authentication integration",
-        "Real-time Messaging: instant message delivery, message status indicators (sent, delivered, seen), Timestamp display",
-        "Contacts & Conversations: Contact list with search functionality, Online status indicators, Unread message counters, Online only filtering",
-        "Rich User Interface: Dark/light mode toggle, Responsive design for all device sizes, Emoji picker",
-      ],
-      technologyStack: ["Frontend: React.js", "Backend/Database: Firebase"],
-    },
-  },
-  {
-    id: 8,
-    title: "Task Master",
-    description:
-      "A responsive and efficient task management app built with React, TailwindCSS, and Supabase. It allows users to manage tasks with features like creation, filtering, and real-time updates via a RESTful API.",
-    image: "/projects/taskmanager.webp",
-    category: "Web App",
-    technologies: ["React", "Tailwind", "Supabase"],
-    link: "https://task-manager-app-cwgb.onrender.com",
-    featured: false,
-    caseStudy: {
-      title: "Task Master",
-      overview:
-        "The Task Manager App is a modern productivity tool designed to help users manage daily tasks with ease. With an intuitive interface and mobile-first responsive design, the app supports creating, updating, filtering, and deleting tasks. Built using a Supabase and React, it focuses on speed, simplicity, and functionality.",
-      features: [
-        "Task Dashboard: Overview of tasks with categorized and prioritized lists.",
-        "CRUD Functionality: Create, read, update, and delete tasks with detailed attributes (title, description, due date, priority, category, and status).",
-        "Task Filtering: Easily filter tasks by category to stay focused.",
-        "Responsive Design: Fully optimized for both desktop and mobile screens.",
+        "Multi-Model Evaluation: Run prompts across multiple AI models simultaneously",
+        "Response Comparison Dashboard: Compare outputs side-by-side in real-time",
+        "Latency Tracking: Measure and display response speed per model",
+        "Usage Estimation: Display token or usage estimates for each request",
+        "Experiment Saving: Store prompt experiments and previous evaluations",
+        "Ranking System: Score and rank model responses based on quality",
+        "Responsive SaaS UI: Elegant and fully responsive interface across devices",
+        "Modular Full-Stack Architecture: Clean separation between frontend and backend systems",
       ],
       technologyStack: [
-        "Frontend: React + Vite, TailwindCSS",
-        "Backend: Supabase",
+        "Frontend: Next.js with Tailwind CSS",
+        "Backend: Express.js (Node.js)",
+        "Database: Supabase (PostgreSQL)",
+        "AI Models: Mistral AI and Groq",
+        "Architecture: Multi-Model AI Evaluation System",
       ],
     },
   },
   {
-    id: 9,
-    title: "QR Code Generator",
+    id: 10,
+    title: "AI Workflow Automation Engine",
     description:
-      "A minimalist QR code generator web app built with React and TypeScript, enabling users to create, preview, and download custom QR codes effortlessly.",
-    image: "/projects/QR_CODE_GENERATOR.png",
-    category: "Web App",
-    technologies: ["React", "TypeScript", "Tailwind CSS"],
-    link: "https://qr-generator-5cw3.onrender.com",
-    featured: false,
+      "A full-stack AI-powered workflow automation platform that enables users to submit tasks in natural language while automatically selecting, orchestrating, and executing workflows through n8n. The system combines AI intent analysis, workflow routing, automation execution, and real-time monitoring to streamline business processes and operational tasks.",
+    image: "/projects/AIWorkflowAutomationEngine.png",
+    category: "AI Automation",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Express.js",
+      "Supabase",
+      "n8n",
+      "Mistral AI",
+      "Groq",
+      "Docker",
+    ],
+    link: "https://ai-automation-engine-eight.vercel.app/",
+    featured: true,
+    videoDemo: "https://www.loom.com/share/38fa1871e948439cae7e500afaabe456", // Loom video added here
+    workflows: [
+      {
+        title: "CSV Analysis Workflow",
+        description:
+          "Transforms raw CSV data into AI-generated reports, summaries, and business insights.",
+        image: "/projects/Automation/CSVAnalysis.png",
+      },
+      {
+        title: "Document Processing Workflow",
+        description:
+          "Automates document extraction, content analysis, and database storage through AI-powered workflows.",
+        image: "/projects/Automation/DocumentProcessing.png",
+      },
+      {
+        title: "Email Automation Workflow",
+        description:
+          "Generates intelligent summaries and automates email delivery through n8n workflow orchestration.",
+        image: "/projects/Automation/EmailAutomation.png",
+      },
+    ],
     caseStudy: {
-      title: "QR Code Generator",
+      title: "AI Workflow Automation Engine",
       overview:
-        "This QR Code Generator is a clean and responsive web tool designed for fast QR code creation. Built with React and TypeScript, it allows users to input any text or URL, generate a live preview, and download the QR code instantly. The minimalist UI ensures a smooth and focused user experience without distractions.",
+        "AI powered workflow orchestration platform that converts natural language requests into executable automation pipelines using n8n, event driven architecture, and a SaaS dashboard.",
       features: [
-        "Text/URL Input: Easily enter any content to encode into a QR code.",
-        "Live Preview: Real-time display of the generated QR code.",
-        "Download QR Code: One-click download of the QR code as a PNG image.",
-        "Copy to Clipboard: Quickly copy the input text or URL.",
-        "Responsive Minimalist Design: Clean layout optimized for desktop and mobile.",
+        "AI Intent Detection: Analyzes user requests and determines the most appropriate workflow",
+        "Workflow Selection Engine: Automatically maps user intent to predefined automation pipelines",
+        "n8n Workflow Orchestration: Executes business processes through self-hosted n8n workflows",
+        "Document Processing: Extracts and processes information from uploaded documents",
+        "CSV Analysis and Reporting: Generates insights and reports from uploaded datasets",
+        "Execution Monitoring: Tracks workflow progress, status, and execution history",
+        "Workflow Logs and Auditing: Stores detailed execution logs for transparency and debugging",
+        "Analytics Dashboard: Visualizes workflow usage, execution metrics, and performance trends",
+        "Integration Management: Supports AI providers, database services, and automation tools",
+        "Responsive SaaS Interface: Optimized user experience across desktop, tablet, and mobile devices",
+        "Webhook-Based Communication: Enables reliable interaction between Express.js and n8n workflows",
+        "Scalable Architecture: Modular design supporting future workflow expansion and integrations",
       ],
       technologyStack: [
-        "Frontend: React.js with TypeScript",
-        "Styling: Tailwind CSS",
-        "QR Code Library: react-qr-code",
+        "Frontend: Next.js (App Router) with TypeScript and Tailwind CSS",
+        "Backend: Express.js (Node.js)",
+        "Database: Supabase (PostgreSQL)",
+        "Automation Engine: n8n Workflow Orchestration",
+        "AI Providers: Mistral AI and Groq",
+        "Storage: Supabase Storage",
+        "Infrastructure: Docker",
+        "Communication: REST APIs and Webhooks",
+        "Architecture: AI-Powered Workflow Automation Platform",
+      ],
+    },
+  },
+  {
+    id: 1,
+    title: "AI-Resume Builder",
+    description:
+      "An intelligent resume builder that uses Mistral AI for skill suggestions, customizable templates, and PDF export with Firebase integration.",
+    image: "/projects/AI-Resume Builder.webp",
+    category: "Web App",
+    technologies: ["React", "Tailwind", "Firebase", "Express", "Mistral AI"],
+    link: "https://ai-rb-haee.onrender.com",
+    featured: true,
+    caseStudy: {
+      title: "AI-Powered Resume Builder: Smarter Resume Creation",
+      overview:
+        "This web application streamlines the resume creation process by integrating Mistral AI to suggest relevant skills based on job titles. It allows users to generate, customize, save, and download resumes using a clean, intuitive interface and PDF-ready templates.",
+      features: [
+        "AI-generated skill suggestions via Mistral AI",
+        "Customizable resume templates styled with Tailwind CSS",
+        "Export resumes as PDF files",
+        "Save and load resumes using Firebase Firestore",
+        "Secure user authentication via Firebase Auth",
+      ],
+      technologyStack: [
+        "Frontend: React.js + Tailwind CSS",
+        "Backend: Express.js (Node.js)",
+        "AI Integration: Mistral AI",
+        "Database: Firebase Firestore",
+        "Authentication: Firebase Authentication",
       ],
     },
   },
 ];
 
-const allProjects: Project[] = [...featuredProjects, ...smallProjects];
-
 export default function ProjectsPage() {
   const { isDark } = useTheme();
-  // State is now strictly typed to Project or null
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
+  const openProject = (project: Project) => {
+    setCurrentSlide(0);
+    setSelectedProject(project);
+  };
+
+  // 2. Simplify the effect — only handle the scroll lock
   useEffect(() => {
     if (selectedProject) {
       document.body.style.overflow = "hidden";
@@ -350,6 +341,23 @@ export default function ProjectsPage() {
       document.body.style.overflow = "unset";
     };
   }, [selectedProject]);
+
+  // Carousel Handlers
+  const nextSlide = () => {
+    if (selectedProject?.workflows) {
+      setCurrentSlide((prev) => (prev + 1) % selectedProject.workflows!.length);
+    }
+  };
+
+  const prevSlide = () => {
+    if (selectedProject?.workflows) {
+      setCurrentSlide(
+        (prev) =>
+          (prev - 1 + selectedProject.workflows!.length) %
+          selectedProject.workflows!.length,
+      );
+    }
+  };
 
   return (
     <div className="min-h-screen p-8 md:p-12 relative">
@@ -371,16 +379,21 @@ export default function ProjectsPage() {
           {allProjects.map((project) => (
             <div
               key={project.id}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => openProject(project)}
               className={`
-                        group relative rounded-xl overflow-hidden cursor-pointer border transition-all duration-300 hover:scale-[1.02]
-                        ${
-                          isDark
-                            ? "bg-neutral-900 border-neutral-800 hover:border-neutral-700"
-                            : "bg-white border-neutral-200 hover:border-neutral-300 shadow-sm hover:shadow-md"
-                        }
-                    `}
+                group relative rounded-xl overflow-hidden cursor-pointer border transition-all duration-300 hover:scale-[1.02]
+                ${isDark ? "bg-neutral-900 border-neutral-800 hover:border-neutral-700" : "bg-white border-neutral-200 hover:border-neutral-300 shadow-sm hover:shadow-md"}
+              `}
             >
+              {/* Category Badge */}
+              <div className="absolute top-3 right-3 z-10">
+                <span
+                  className={`px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md rounded border shadow-sm ${isDark ? "bg-black/60 border-white/10 text-white" : "bg-white/80 border-black/10 text-black"}`}
+                >
+                  {project.category}
+                </span>
+              </div>
+
               <div className="relative aspect-video w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
                 <Image
                   src={project.image}
@@ -390,9 +403,11 @@ export default function ProjectsPage() {
                 />
               </div>
 
-              <div className="p-5">
+              <div className="p-5 flex flex-col h-55">
                 <div className="flex justify-between items-start mb-2">
-                  <h3 className="font-bold text-lg">{project.title}</h3>
+                  <h3 className="font-bold text-lg leading-tight">
+                    {project.title}
+                  </h3>
                 </div>
                 <p
                   className={`text-sm mb-4 line-clamp-3 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
@@ -403,14 +418,7 @@ export default function ProjectsPage() {
                   {project.technologies.slice(0, 3).map((tech) => (
                     <span
                       key={tech}
-                      className={`
-                                        text-[10px] px-2 py-1 rounded font-medium border
-                                        ${
-                                          isDark
-                                            ? "bg-neutral-800 border-neutral-700 text-neutral-300"
-                                            : "bg-neutral-100 border-neutral-200 text-neutral-600"
-                                        }
-                                    `}
+                      className={`text-[10px] px-2 py-1 rounded font-medium border ${isDark ? "bg-neutral-800 border-neutral-700 text-neutral-300" : "bg-neutral-100 border-neutral-200 text-neutral-600"}`}
                     >
                       {tech}
                     </span>
@@ -437,14 +445,14 @@ export default function ProjectsPage() {
 
           <div
             className={`
-                    relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl border flex flex-col
-                    ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200"}
-                    /* CUSTOM SCROLLBAR STYLING */
-                    [&::-webkit-scrollbar]:w-2
-                    [&::-webkit-scrollbar-track]:bg-transparent
-                    ${isDark ? "[&::-webkit-scrollbar-thumb]:bg-neutral-800" : "[&::-webkit-scrollbar-thumb]:bg-neutral-200"}
-                    [&::-webkit-scrollbar-thumb]:rounded-full
-                `}
+                relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl shadow-2xl border flex flex-col
+                ${isDark ? "bg-neutral-900 border-neutral-800" : "bg-white border-neutral-200"}
+                /* CUSTOM SCROLLBAR STYLING */
+                [&::-webkit-scrollbar]:w-2
+                [&::-webkit-scrollbar-track]:bg-transparent
+                ${isDark ? "[&::-webkit-scrollbar-thumb]:bg-neutral-800" : "[&::-webkit-scrollbar-thumb]:bg-neutral-200"}
+                [&::-webkit-scrollbar-thumb]:rounded-full
+            `}
           >
             <button
               onClick={() => setSelectedProject(null)}
@@ -462,34 +470,44 @@ export default function ProjectsPage() {
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent" />
-              <div className="absolute bottom-6 left-6 text-white">
-                <h2 className="text-3xl font-bold mb-2">
+              <div className="absolute bottom-6 left-6 right-6 flex flex-col items-start gap-3">
+                <span className="px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider bg-blue-600 text-white rounded">
+                  {selectedProject.category}
+                </span>
+                <h2 className="text-3xl font-bold text-white">
                   {selectedProject.title}
                 </h2>
-                <div className="flex gap-2">
-                  {selectedProject.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-1 bg-white/20 backdrop-blur-md rounded text-xs font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
               </div>
             </div>
 
             <div className="p-6 md:p-8 space-y-8">
-              {/* Live Link Button */}
-              <div className="flex gap-4">
+              {/* Actions / Links */}
+              <div className="flex flex-wrap gap-4">
                 <a
                   href={selectedProject.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-colors ${isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"}`}
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors ${isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"}`}
                 >
                   <ExternalLink size={16} /> View Live Project
                 </a>
+
+                {/* LOOM VIDEO DEMO BUTTON */}
+                {selectedProject.videoDemo && (
+                  <a
+                    href={selectedProject.videoDemo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm transition-colors border ${isDark ? "border-neutral-700 bg-neutral-800 hover:bg-neutral-700 text-white" : "border-neutral-200 bg-neutral-50 hover:bg-neutral-100 text-black"}`}
+                  >
+                    <Play
+                      size={16}
+                      className="text-blue-500"
+                      fill="currentColor"
+                    />{" "}
+                    Watch Demo
+                  </a>
+                )}
               </div>
 
               {/* Overview */}
@@ -511,7 +529,74 @@ export default function ProjectsPage() {
                 </p>
               </section>
 
-              {/* Problem & Solution (Typed Check) */}
+              {/* AUTOMATION WORKFLOWS SLIDER */}
+              {selectedProject.workflows &&
+                selectedProject.workflows.length > 0 && (
+                  <section
+                    className={`p-6 rounded-xl border ${isDark ? "bg-neutral-950 border-neutral-800" : "bg-neutral-50 border-neutral-200"}`}
+                  >
+                    <h3
+                      className={`text-xl font-bold mb-4 flex items-center gap-2 ${isDark ? "text-white" : "text-black"}`}
+                    >
+                      <Workflow
+                        size={20}
+                        className={isDark ? "text-blue-400" : "text-blue-600"}
+                      />
+                      Automation Workflows
+                    </h3>
+
+                    <div className="relative group">
+                      {/* Image Container */}
+                      <div
+                        className={`relative w-full aspect-video rounded-lg overflow-hidden border ${isDark ? "border-neutral-800 bg-neutral-900" : "border-neutral-200 bg-white"}`}
+                      >
+                        <Image
+                          src={selectedProject.workflows[currentSlide].image}
+                          alt={selectedProject.workflows[currentSlide].title}
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+
+                      {/* Controls */}
+                      {selectedProject.workflows.length > 1 && (
+                        <>
+                          <button
+                            onClick={prevSlide}
+                            className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80 cursor-pointer"
+                          >
+                            <ChevronLeft size={20} />
+                          </button>
+                          <button
+                            onClick={nextSlide}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80 cursor-pointer"
+                          >
+                            <ChevronRight size={20} />
+                          </button>
+                        </>
+                      )}
+                    </div>
+
+                    {/* Description Container */}
+                    <div className="mt-4 flex justify-between items-start gap-4">
+                      <div>
+                        <h4 className="font-bold text-lg">
+                          {selectedProject.workflows[currentSlide].title}
+                        </h4>
+                        <p
+                          className={`text-sm mt-1 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+                        >
+                          {selectedProject.workflows[currentSlide].description}
+                        </p>
+                      </div>
+                      <div className="text-xs font-mono opacity-50 shrink-0 mt-1">
+                        {currentSlide + 1} / {selectedProject.workflows.length}
+                      </div>
+                    </div>
+                  </section>
+                )}
+
+              {/* Problem & Solution */}
               {selectedProject.caseStudy?.problemAndSolution && (
                 <div className="grid md:grid-cols-2 gap-6">
                   <div
@@ -558,14 +643,7 @@ export default function ProjectsPage() {
                   {selectedProject.caseStudy?.features.map((feature, idx) => (
                     <div
                       key={idx}
-                      className={`
-                                        p-3 rounded-lg border transition-colors
-                                        ${
-                                          isDark
-                                            ? "bg-neutral-800/50 border-neutral-800 text-neutral-300"
-                                            : "bg-neutral-50 border-neutral-100 text-neutral-600"
-                                        }
-                                    `}
+                      className={`p-3 rounded-lg border transition-colors ${isDark ? "bg-neutral-800/50 border-neutral-800 text-neutral-300" : "bg-neutral-50 border-neutral-100 text-neutral-600"}`}
                     >
                       <span className="text-sm">{feature}</span>
                     </div>

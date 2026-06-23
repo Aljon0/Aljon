@@ -23,7 +23,7 @@ export default function TechStackPage() {
     },
     {
       title: "Automation",
-      skills: ["Make.com", "n8n (basic)", "Webhooks & API orchestration", "RAG (Foundational)"]
+      skills: ["Make.com", "n8n", "Webhooks & API orchestration", "RAG (Foundational)"]
     },
     {
       title: "AI Development Platforms",
@@ -31,7 +31,7 @@ export default function TechStackPage() {
     },
     {
       title: "DevOps & Deployment",
-      skills: ["Docker (basic)", "GitHub Actions", "Vercel", "Railway", "Firebase Hosting", "Render"]
+      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Firebase Hosting", "Render"]
     },
     {
       title: "AI-Assisted Tools",
