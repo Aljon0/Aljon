@@ -289,6 +289,61 @@ const allProjects: Project[] = [
     },
   },
   {
+    id: 9,
+    title: "Autonomous Research Agent",
+    description:
+      "A full-stack AI agent platform that transforms high-level research goals into structured reports through autonomous planning, workflow orchestration, memory storage, and AI-powered analysis. The system automatically creates research plans, executes tasks through n8n workflows, stores findings, and generates actionable insights.",
+
+    image: "/projects/Autonomous-Research-Agent.png",
+
+    category: "AI Agent",
+
+    technologies: [
+      "Next.js",
+      "Tailwind",
+      "Express",
+      "Supabase",
+      "n8n",
+      "Mistral AI",
+      "Groq",
+      "Docker",
+    ],
+
+    link: "https://autonomous-research-agent-kappa.vercel.app/research",
+
+    featured: true,
+
+    caseStudy: {
+      title: "Autonomous Research Agent",
+
+      overview:
+        "This project is an AI-powered autonomous research system designed to perform multi-step research tasks with minimal human intervention. Users provide a research objective, and the platform automatically generates a research plan, orchestrates workflows through n8n, gathers and analyzes information using AI, stores findings in memory, and produces structured business-ready reports. The project was built to explore agentic AI architectures, workflow automation, and intelligent task execution using modern full-stack technologies.",
+
+      features: [
+        "Goal-Based Research: Users provide a research objective instead of manually defining tasks",
+        "AI Planning Layer: Automatically breaks research goals into actionable steps",
+        "Workflow Orchestration: Executes research tasks through n8n workflows",
+        "Research Tool Integration: Uses search, analysis, and summarization capabilities",
+        "Persistent Memory: Stores findings and execution data in Supabase",
+        "Execution Tracking: Tracks workflow progress throughout the research process",
+        "Structured Report Generation: Produces organized reports with insights and recommendations",
+        "Responsive User Interface: Clean and intuitive experience across desktop and mobile devices",
+        "Modular Agent Architecture: Planning, execution, memory, and reporting layers separated for maintainability",
+      ],
+
+      technologyStack: [
+        "Frontend: Next.js with Tailwind CSS",
+        "Backend: Express.js (Node.js)",
+        "Database: Supabase (PostgreSQL)",
+        "Automation: n8n Workflow Orchestration",
+        "AI Providers: Mistral AI and Groq",
+        "Infrastructure: Docker",
+        "Architecture: Autonomous Agent System",
+      ],
+    },
+  },
+
+  {
     id: 1,
     title: "AI-Resume Builder",
     description:
