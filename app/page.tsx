@@ -113,11 +113,17 @@ export default function Home() {
                 </p>
               </div>
 
-              <h2
-                className={`text-xl font-medium ${isDark ? "text-neutral-200" : "text-neutral-800"}`}
-              >
-                Full Stack AI Developer
-              </h2>
+              <div className="space-y-2">
+                <h2
+                  className={`text-xl font-medium ${isDark ? "text-neutral-200" : "text-neutral-800"}`}
+                >
+                 Full Stack Developer • AI • SaaS • Automation
+                </h2>
+                
+                <p className={`italic text-sm md:text-base ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
+                  Building AI powered web applications, SaaS platforms, workflow automation systems, and modern full stack experiences.
+                </p>
+              </div>
 
               <div className="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
                 <a
@@ -183,24 +189,13 @@ export default function Home() {
               className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-300" : "text-neutral-600"}`}
             >
               <p>
-                I&apos;m a Full-Stack Developer with a strong focus on building
-                AI-powered applications. I work with React, Next.js, TypeScript,
-                and Node.js to create modern web interfaces, and I integrate AI
-                systems using large language models, APIs, and backend
-                workflows.
+              I&apos;am a Full Stack Developer focused on building AI powered applications and modern web platforms. I work mainly with React, Next.js, TypeScript, Node.js, and backend services to create responsive and scalable products.
               </p>
               <p>
-                My recent work focuses on AI-driven products such as intelligent
-                assistants, automation tools, and data-aware applications. I
-                have experience working with OpenAI and Claude, implementing
-                prompt-driven workflows, and using databases like Supabase and
-                Firebase.
+              My recent projects include AI applications, workflow automation systems, SaaS platforms, and interactive web experiences. I have experience integrating language models, building APIs, working with Supabase and PostgreSQL, and turning ideas into production ready applications.
               </p>
               <p>
-                I&apos;m especially interested in applied AI — turning models
-                into usable products. I value clean architecture, reliable
-                systems, and building AI features that genuinely improve user
-                workflows.
+              I enjoy solving real problems through software and continuously improving my skills in AI, full stack development, and system design.
               </p>
             </div>
           </Card>
@@ -320,7 +315,9 @@ export default function Home() {
                     <p
                       className={`text-xs line-clamp-2 ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
                     >
-                      A full-stack AI-powered knowledge base system that allows users to upload PDFs, ask questions, and receive accurate answers with citations.
+                      A full-stack AI-powered knowledge base system that allows
+                      users to upload PDFs, ask questions, and receive accurate
+                      answers with citations.
                     </p>
                   </div>
                 </div>

@@ -11,35 +11,35 @@ export default function TechStackPage() {
   const categories = [
     {
       title: "Frontend",
-      skills: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Vite", "HTML5 / CSS3"]
+      skills: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Vite"]
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Authentication (JWT)", "Webhooks & API integrations", "PostgreSQL", "MongoDB", "Supabase", "Firebase", "MySQL", "PHP"]
+      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Authentication (JWT)", "Webhooks & API integrations", "PostgreSQL", "Supabase", "Firebase"]
     },
     {
       title: "AI & Applied Machine Learning",
-      skills: ["Large Language Models (LLMs)", "Groq (low-latency)", "OpenAI", "Anthropic (Claude)", "MistralAI", "Hugging Face", "LangChain", "Prompt Engineering", "AI Agent Workflows"]
+      skills: ["Large Language Models (LLMs)", "Groq", "OpenAI", "Anthropic (Claude)", "MistralAI", "Hugging Face", "LangChain", "Prompt Engineering", "AI Agent Workflows"]
     },
     {
       title: "Automation",
-      skills: ["Make.com", "n8n", "Webhooks & API orchestration", "RAG (Foundational)"]
+      skills: ["Make.com", "n8n", "Workflow Orchestration", "Event Driven Architecture", "Webhooks & API Automation", "AI Agent Workflows"]
     },
     {
-      title: "AI Development Platforms",
+      title: "AI App Builders",
       skills: ["Replit", "Lovable AI"]
     },
     {
       title: "DevOps & Deployment",
-      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Firebase Hosting", "Render"]
+      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Supabase", "Render", "CI/CD"]
     },
     {
       title: "AI-Assisted Tools",
-      skills: ["Cursor", "Claude Code", "GitHub Copilot", "Windsurf", "ChatGPT", "Gemini", "Deepseek"]
+      skills: ["Cursor", "Claude Code", "GitHub Copilot", "Windsurf", "ChatGPT", "Gemini"]
     },
     {
       title: "Developer Tools",
-      skills: ["Git & GitHub", "VS Code", "Postman", "Slack", "Notion", "Jira / ClickUp"]
+      skills: ["Git & GitHub", "VS Code", "Postman", "Slack", "Notion", "Figma"]
     }
   ];
 
