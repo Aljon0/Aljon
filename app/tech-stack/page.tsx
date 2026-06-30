@@ -11,31 +11,31 @@ export default function TechStackPage() {
   const categories = [
     {
       title: "Frontend",
-      skills: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Vite"]
+      skills: ["TypeScript", "React", "Next.js", "Tailwind CSS", "React Native", "Responsive Design"]
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Authentication (JWT)", "Webhooks & API integrations", "PostgreSQL", "Supabase", "Firebase"]
+      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Supabase", "PostgreSQL", "Firebase", "Webhooks & API Integrations", "Serverless APIs"]
     },
     {
       title: "AI & Applied Machine Learning",
-      skills: ["Large Language Models (LLMs)", "Groq", "OpenAI", "Anthropic (Claude)", "MistralAI", "Hugging Face", "LangChain", "Prompt Engineering", "AI Agent Workflows"]
+      skills: ["LLM Integration", "OpenAI", "OpenAI", "Anthropic (Claude)", "MistralAI", "Hugging Face", "RAG", "Prompt Engineering", "LangChain", "AI Agent Workflows", "Vision AI"]
     },
     {
       title: "Automation",
-      skills: ["Make.com", "n8n", "Workflow Orchestration", "Event Driven Architecture", "Webhooks & API Automation", "AI Agent Workflows"]
+      skills: ["n8n", "Workflow Automation", "Workflow Orchestration",  "AI Agent Workflows", "Webhooks", "Event Driven Architecture", "Business Process Automation","Make.com"]
     },
     {
-      title: "AI App Builders",
-      skills: ["Replit", "Lovable AI"]
+      title: "AI Development Platforms",
+      skills: ["Replit", "Lovable AI", "Cursor", "Claude Code"]
     },
     {
       title: "DevOps & Deployment",
-      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Supabase", "Render", "CI/CD"]
+      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Containerization", "Render", "CI/CD"]
     },
     {
       title: "AI-Assisted Tools",
-      skills: ["Cursor", "Claude Code", "GitHub Copilot", "Windsurf", "ChatGPT", "Gemini"]
+      skills: ["Cursor", "Claude Code", "GitHub Copilot", "Windsurf", "Codex", "Gemini"]
     },
     {
       title: "Developer Tools",
