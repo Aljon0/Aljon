@@ -117,11 +117,14 @@ export default function Home() {
                 <h2
                   className={`text-xl font-medium ${isDark ? "text-neutral-200" : "text-neutral-800"}`}
                 >
-                 Full Stack Developer • AI • SaaS • Automation
+                  Full Stack Developer • AI • SaaS • Automation
                 </h2>
-                
-                <p className={`italic text-sm md:text-base ${isDark ? "text-neutral-400" : "text-neutral-600"}`}>
-                  Building AI powered web applications, SaaS platforms, workflow automation systems, and modern full stack experiences.
+
+                <p
+                  className={`italic text-sm md:text-base ${isDark ? "text-neutral-400" : "text-neutral-600"}`}
+                >
+                  Building AI powered applications, automation workflows, and
+                  scalable full stack systems from idea to deployment.
                 </p>
               </div>
 
@@ -189,13 +192,24 @@ export default function Home() {
               className={`space-y-4 leading-relaxed ${isDark ? "text-neutral-300" : "text-neutral-600"}`}
             >
               <p>
-              I&apos;am a Full Stack Developer focused on building AI powered applications and modern web platforms. I work mainly with React, Next.js, TypeScript, Node.js, and backend services to create responsive and scalable products.
+                I am a Full Stack Developer focused on building AI powered
+                applications, workflow automation systems, and modern SaaS
+                platforms. I work mainly with React, Next.js, TypeScript,
+                Node.js, and backend services to build scalable and production
+                ready products.
               </p>
               <p>
-              My recent projects include AI applications, workflow automation systems, SaaS platforms, and interactive web experiences. I have experience integrating language models, building APIs, working with Supabase and PostgreSQL, and turning ideas into production ready applications.
+                My recent projects include AI applications, automation
+                platforms, RAG systems, and interactive web experiences. I have
+                experience integrating language models, building APIs, designing
+                automation workflows, and working with Supabase and PostgreSQL
+                to deliver real world solutions.
               </p>
               <p>
-              I enjoy solving real problems through software and continuously improving my skills in AI, full stack development, and system design.
+                I enjoy turning ideas into working products through software,
+                AI, and automation. I continuously improve my skills in full
+                stack development, system design, and building intelligent
+                experiences that solve real problems.
               </p>
             </div>
           </Card>
@@ -221,14 +235,14 @@ export default function Home() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {[
-                  "JavaScript",
                   "TypeScript",
-                  "Next.js",
                   "React",
+                  "Next.js",
                   "Node.js",
-                  "Express.js",
-                  "OpenAI",
                   "Supabase",
+                  "n8n",
+                  "LLM Integration",
+                  "Workflow Automation",
                 ].map((tech) => (
                   <span
                     key={tech}
