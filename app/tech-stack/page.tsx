@@ -15,23 +15,23 @@ export default function TechStackPage() {
     },
     {
       title: "Backend",
-      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Supabase", "PostgreSQL", "Firebase", "Webhooks & API Integrations", "Serverless APIs"]
+      skills: ["Node.js", "Express.js", "REST APIs", "Prisma ORM", "Supabase", "PostgreSQL", "Firebase", "Webhooks & API Integrations", "Serverless APIs", "MySQL", "Authentication (JWT)", "Queue Processing"]
     },
     {
       title: "AI & Applied Machine Learning",
-      skills: ["LLM Integration", "OpenAI", "OpenAI", "Anthropic (Claude)", "MistralAI", "Hugging Face", "RAG", "Prompt Engineering", "LangChain", "AI Agent Workflows", "Vision AI"]
+      skills: ["LLM Integration", "OpenAI", "Anthropic (Claude)", "MistralAI", "Hugging Face", "RAG", "Prompt Engineering", "LangChain", "AI Agent Workflows", "Vision AI", "Vector Databases", "Embeddings", "Tool Calling", "AI Evaluation"]
     },
     {
       title: "Automation",
-      skills: ["n8n", "Workflow Automation", "Workflow Orchestration",  "AI Agent Workflows", "Webhooks", "Event Driven Architecture", "Business Process Automation","Make.com"]
+      skills: ["n8n", "Workflow Automation", "AI Agent Workflows", "Webhooks", "Event Driven Architecture", "Business Process Automation","Make.com", "Event Driven Systems", "Queue Architecture"]
     },
     {
       title: "AI Development Platforms",
-      skills: ["Replit", "Lovable AI", "Cursor", "Claude Code"]
+      skills: ["Lovable AI", "Cursor", "Claude Code"]
     },
     {
       title: "DevOps & Deployment",
-      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Containerization", "Render", "CI/CD"]
+      skills: ["Docker", "GitHub Actions", "Vercel", "Railway", "Render", "CI/CD"]
     },
     {
       title: "AI-Assisted Tools",
@@ -39,7 +39,7 @@ export default function TechStackPage() {
     },
     {
       title: "Developer Tools",
-      skills: ["Git & GitHub", "VS Code", "Postman", "Slack", "Notion", "Figma"]
+      skills: ["Git & GitHub", "VS Code", "Postman", "Slack", "Notion", "Figma", "Docker Compose", "GitHub Projects"]
     }
   ];
 
